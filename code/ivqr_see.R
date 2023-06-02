@@ -188,26 +188,26 @@ while (htmp>=h_init*hfac^(-0)) {
 				warning=function(w) NA,
 				error=function(w) NA
 				)
-	exitOK1 <- !(is.na(btmp) || btmp$niter==MAXITER)
+	exitOK1 <- !(is.na(btmp)[1] || (btmp$niter==MAXITER)[1])
 	if (exitOK1) {
 		h_pilot <- htmp
 	}
 	if (found_flag && !exitOK1) {
 		break
-	} else if (exitOK1 && htmp==h_init) {
+	} else if (exitOK1[1] && (htmp==h_init)[1]) {
 		found_flag <- TRUE
 		b_win <- btmp$zero
 		f_win <- objfn1(btmp$zero)
 		htmp <- htmp/hfac
-	} else if (exitOK1 && !found_flag && htmp>h_init) {
+	} else if (exitOK1[1] && !found_flag[1] && (htmp>h_init)[1]) {
 		b_win <- btmp$zero
 		f_win <- objfn1(btmp$zero)
 		break
-	} else if (exitOK1 && found_flag) {
+	} else if (exitOK1[1] && found_flag[1]) {
 		b_win <- btmp$zero
 		f_win <- objfn1(btmp$zero)
 		htmp <- htmp/hfac
-	} else if (!exitOK1 && !found_flag) {
+	} else if (!exitOK1[1] && !found_flag[1]) {
 		htmp <- htmp*hfac
 	} else {
 		stop('Missed case in b_pilot initialization.')
@@ -301,14 +301,14 @@ b_est1 <- tryCatch(newtonsys(Ffun=objfn2,x0=b_pilot,Jfun=jacfn2,maxiter=MAXITER)
 				warning=function(w) NA,
 				error=function(w) NA
 				)
-exitOK2 <- !(is.na(b_est1) || b_est1$niter==MAXITER)
+exitOK2 <- !(is.na(b_est1)[1] || (b_est1$niter==MAXITER)[1])
 if (!exitOK2) {
 		b_est2 <- tryCatch(newtonsys(Ffun=objfn2,x0=matrix(0,d,1),Jfun=jacfn2,maxiter=MAXITER),
 				warning=function(w) NA,
 				error=function(w) NA
 				)
-		exitOK3 <- !(is.na(b_est2) || b_est2$niter==MAXITER)
-		if (!(is.na(b_est2)) && !(is.na(b_est1)) && colSums(as.matrix(abs(objfn2(b_est2$zero))))<colSums(as.matrix(abs(objfn2(b_est1$zero))))) {
+		exitOK3 <- !(is.na(b_est2)[1] || (b_est2$niter==MAXITER)[1])
+		if (!(is.na(b_est2))[1] && !(is.na(b_est1))[1] && colSums(as.matrix(abs(objfn2(b_est2$zero))))<colSums(as.matrix(abs(objfn2(b_est1$zero))))[1]) {
 		b_est1$zero <- b_est2$zero
 		if (b_est1$niter==MAXITER) {
 			exitOK2 <- exitOK3
@@ -332,7 +332,7 @@ if (!exitOK2) {
 				warning=function(w) NA,
 				error=function(w) NA
 				)
-	exitOK4 <- !(is.na(btmp1) || btmp1$niter==MAXITER)
+	exitOK4 <- !(is.na(btmp1)[1] || (btmp1$niter==MAXITER)[1])
 	if (!exitOK4) {
 		break
 	} else {
@@ -349,8 +349,8 @@ b_est3 <- tryCatch(newtonsys(Ffun=objfn2,x0=b_win,Jfun=jacfn2,maxiter=MAXITER),
 				warning=function(w) NA,
 				error=function(w) NA
 				)
-	exitOK5 <- !(is.na(b_est3) || b_est3$niter==MAXITER)
-	if (exitOK5 && colSums(as.matrix(abs(objfn2(b_est3$zero))))<colSums(as.matrix(abs(objfn2(b_est1$zero))))) {
+	exitOK5 <- !(is.na(b_est3)[1] || (b_est3$niter==MAXITER)[1])
+	if (exitOK5[1] && colSums(as.matrix(abs(objfn2(b_est3$zero))))<colSums(as.matrix(abs(objfn2(b_est1$zero))))[1]) {
 		b_est1$zero <- b_est3$zero
 		exitOK <- exitOK5
 		}	else {
