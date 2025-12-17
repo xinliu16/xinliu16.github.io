@@ -6,3 +6,10 @@ body{
     background: white;
     text-align: left;
 }
+
+.container {
+  width: 90%; /* or a fixed pixel width like 900px */
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
