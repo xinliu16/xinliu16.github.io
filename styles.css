@@ -1,13 +1,172 @@
-body{
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-right: 40px;
-    margin-left: 40px;
-    background: white;
+/*
+ * styles.css
+ * Clean, structured stylesheet for academic/professional portfolio.
+ * Features requested 40px/100px body layout with safety fallbacks and layout fixes.
+ */
+
+/* ==========================================================================
+   1. Reset & Global Base Styles
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    /* Layout Dimensions */
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
+    margin-right: 40px !important;
+    margin-left: 40px !important;
+    
+    /* Typography & Presentation */
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333333;
+    line-height: 1.6;
     text-align: left;
 }
 
+/* ==========================================================================
+   2. Layout Containers
+   ========================================================================== */
+#wrapper {
+    width: 100%;
+    max-width: 900px; /* Limits content width on huge screens for better readability */
+    margin: 0 auto;   /* Centers the wrapper within the body margins */
+}
 
+#content {
+    width: 100%;
+    display: block;
+}
 
+/* ==========================================================================
+   3. Personal Info Section (Vitals & Photo)
+   ========================================================================== */
+#personalInfo {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    clear: both;
+}
 
+#personalInfo img {
+    float: left;
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    background-color: #f5f5f5;
+}
 
+#vitals {
+    overflow: hidden; /* Clearfix to contain floated text elements next to the image */
+}
+
+/* Fix for the duplicate ID issue in user HTML — handles both id and class fallback */
+#name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #111111;
+    margin-top: 0;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+#title, .title {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #555555;
+    margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   4. Typography & Section Formatting
+   ========================================================================== */
+h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #222222;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333333;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #444444;
+}
+
+.subsection {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* ==========================================================================
+   5. Links & Interactive Elements
+   ========================================================================== */
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #004499;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   6. Footer
+   ========================================================================== */
+#footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-size: 0.85rem;
+    color: #777777;
+    clear: both;
+}
+
+/* ==========================================================================
+   7. Responsive Adaptations (Mobile First Safety)
+   ========================================================================== */
+@media (max-width: 600px) {
+    body {
+        /* Scale down massive margins on small mobile screens to prevent layout breaking */
+        margin-top: 40px !important;
+        margin-bottom: 40px !important;
+        margin-right: 20px !important;
+        margin-left: 20px !important;
+    }
+
+    #personalInfo img {
+        float: none;
+        display: block;
+        margin: 0 auto 20px auto;
+    }
+
+    #vitals {
+        text-align: center;
+    }
+}
