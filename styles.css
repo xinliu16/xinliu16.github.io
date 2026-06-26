@@ -90,6 +90,11 @@ body {
     margin-bottom: 8px;
 }
 
+.title a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
 /* ==========================================================================
    4. Typography & Section Formatting
    ========================================================================== */
