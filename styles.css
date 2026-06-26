@@ -148,6 +148,15 @@ a:hover {
     clear: both;
 }
 
+#footer a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 6px 10px;
+    margin: -6px -10px; /* offsets the padding so layout doesn't visually shift */
+}
 /* ==========================================================================
    7. Responsive Adaptations (Mobile First Safety)
    ========================================================================== */
